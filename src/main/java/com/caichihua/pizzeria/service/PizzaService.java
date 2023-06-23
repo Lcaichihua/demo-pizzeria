@@ -2,6 +2,7 @@ package com.caichihua.pizzeria.service;
 
 
 import com.caichihua.pizzeria.persistencia.entity.PizzaEntity;
+import com.caichihua.pizzeria.persistencia.repository.PizzaRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,14 +12,14 @@ import java.util.List;
 
 @Service
 public class PizzaService {
-    private final JdbcTemplate jdbcTemplate;
+    private final PizzaRespository pizzaRespository;
 
     @Autowired
-    public PizzaService(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate=jdbcTemplate;
+    public PizzaService(PizzaRespository pizzaRespository) {
+        this.pizzaRespository=pizzaRespository;
     }
 
     public List<PizzaEntity> getAll(){
-        return this.jdbcTemplate.query("SELECT * FROM pizza", new BeanPropertyRowMapper<>(PizzaEntity.class));
+        return  this.pizzaRespository.findAll();
     }
 }
