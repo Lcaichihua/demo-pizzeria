@@ -22,4 +22,8 @@ public class PizzaService {
     public List<PizzaEntity> getAll(){
         return  this.pizzaRespository.findAll();
     }
+    public PizzaEntity get(int idPizza){
+        return  this.pizzaRespository.findById(idPizza).orElse(null);
+    }
+
 }
