@@ -25,7 +25,7 @@ private final PizzaService pizzaService;
     public ResponseEntity<List<PizzaEntity>> getAll(){
         return ResponseEntity.ok(this.pizzaService.getAll());
     }
-    @GetMapping("/idpizza")
+    @GetMapping("/{idPizza}")
     public ResponseEntity<PizzaEntity> getAll(@PathVariable int idPizza){
         return ResponseEntity.ok(this.pizzaService.get(idPizza));
     }
