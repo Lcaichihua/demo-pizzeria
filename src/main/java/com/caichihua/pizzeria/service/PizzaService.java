@@ -23,7 +23,17 @@ public class PizzaService {
         return  this.pizzaRespository.findAll();
     }
     public PizzaEntity get(int idPizza){
+
         return  this.pizzaRespository.findById(idPizza).orElse(null);
+    }
+    public PizzaEntity save(PizzaEntity pizza) {
+        return this.pizzaRespository.save(pizza);
+    }
+    public void delete(int idPizza) {
+        this.pizzaRespository.deleteById(idPizza);
+    }
+    public boolean exists(int idPizza) {
+        return this.pizzaRespository.existsById(idPizza);
     }
 
 }
