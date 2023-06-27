@@ -26,6 +26,14 @@ private final PizzaService pizzaService;
     public ResponseEntity<PizzaEntity> getAll(@PathVariable int idPizza){
         return ResponseEntity.ok(this.pizzaService.get(idPizza));
     }
+    @GetMapping("/available")
+    public ResponseEntity<List<PizzaEntity>> getAvailable() {
+        return ResponseEntity.ok(this.pizzaService.getAvailable());
+    }
+    @GetMapping("/name/{name}")
+    public ResponseEntity<PizzaEntity> getByName(@PathVariable String name) {
+        return ResponseEntity.ok(this.pizzaService.getByName(name));
+    }
     @PostMapping
     public ResponseEntity<PizzaEntity> add(@RequestBody PizzaEntity pizza) {
         if (pizza.getIdPizza() == null || !this.pizzaService.exists(pizza.getIdPizza())) {
